@@ -92,10 +92,82 @@
       font-size: 1.15rem;
       line-height: 1.85;
       color: #b0a89f;
+      white-space: pre-line;
     }
 
     .post p + p {
       margin-top: 12px;
+    }
+
+    /* ─── МЕДИА КОНТЕЙНЕРЫ ─────────────────── */
+    .media {
+      margin: 20px 0;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #1e1e1e;
+      background: #0a0a0a;
+    }
+
+    .media img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      max-height: 500px;
+    }
+
+    .media video {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #000;
+    }
+
+    /* Аудио плеер */
+    .audio-player {
+      background: linear-gradient(135deg, #1a1715 0%, #0f0f0f 100%);
+      padding: 18px 22px;
+      margin: 20px 0;
+      border-radius: 8px;
+      border: 1px solid #2a2520;
+    }
+
+    .audio-player audio {
+      width: 100%;
+      height: 40px;
+      filter: sepia(20%) saturate(70%) hue-rotate(5deg);
+    }
+
+    .audio-caption {
+      margin-top: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      color: #6b655e;
+      text-align: center;
+      letter-spacing: 0.08em;
+    }
+
+    /* Галерея (несколько фото) */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid #1e1e1e;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+      border-color: #3a3530;
     }
 
     /* ─── ТЕГИ ──────────────────────────────── */
@@ -116,6 +188,31 @@
       border-radius: 20px;
       padding: 3px 10px;
     }
+
+    /* Лайтбокс для увеличения фото */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.93);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 40px;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 95%;
+      max-height: 95%;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+    }
   </style>
 </head>
 <body>
@@ -128,149 +225,155 @@
 
   <main>
 
-    <!-- ═══ ПРИМЕР ПОСТА 1 ═══════════════════════════════════ -->
     <article class="post">
       <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
       <h2>Первая запись</h2>
-      <p>
-        Решил завести дневник. Не знаю зачем - наверное, чтобы хоть куда-то
-        выгружать всё то, что копится в голове. Посмотрим, надолго ли меня хватит.
-      </p>
+      <p>Решил завести дневник. Не знаю зачем - наверное, чтобы хоть куда-то
+выгружать всё то, что копится в голове. Посмотрим, надолго ли меня хватит.</p>
       <div class="tags">
         <span class="tag">начало</span>
         <span class="tag">мысли</span>
       </div>
     </article> 
 
- <!-- ═══ ПРИМЕР ПОСТА 1 ═══════════════════════════════════ -->
     <article class="post">
       <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
       <h2>Дневник?</h2>
-      <p>
-        Я не доверяю бумажным дневникам, да и где мне его хранить, а так про этот сайт буду знать только я
-      </p>
+      <p>Я не доверяю бумажным дневникам, да и где мне его хранить, а так про этот сайт буду знать только я</p>
       <div class="tags">
         <span class="tag">начало</span>
         <span class="tag">мысли</span>
       </div>
     </article> 
 
-<!-- ═══ ПРИМЕР ПОСТА 1 ═══════════════════════════════════ -->
     <article class="post">
       <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
       <h2>Смерть</h2>
-      <p>
-        Вы когда-нибудь задумывались о том, что будет после смерти, рай или ад, реинкарнация или просто... Ничего?
+      <p>Вы когда-нибудь задумывались о том, что будет после смерти, рай или ад, реинкарнация или просто... Ничего?
 
 Может, после смерти будет то, что было до нашего рождения, Я НЕ ЗНАЮ. И из-за ЭТОГО МНЕ ПЛОХО.
 
-Сами задумайтесь, как после смерти, мы ведь никогда не узнаем...
-      </p>
+Сами задумайтесь, как после смерти, мы ведь никогда не узнаем...</p>
       <div class="tags">
         <span class="tag">СМЕРТЬ...</span>
         <span class="tag">мысли</span>
       </div>
     </article> 
 
-<!-- ═══ ПРИМЕР ПОСТА 1 ═══════════════════════════════════ -->
     <article class="post">
       <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
       <h2>Я уебан</h2>
-      <p>
-        Сегодня я разбил свой телефон в школе, точнее, вчера, теперь у меня трещина на экране телефона.
+      <p>Сегодня я разбил свой телефон в школе, точнее, вчера, теперь у меня трещина на экране телефона.
 
-Какой я неуклюжий
-      </p>
+Какой я неуклюжий</p>
       <div class="tags">
         <span class="tag">телефон</span>
         <span class="tag">мысли</span>
       </div>
     </article> 
 
-<!-- ═══ ПРИМЕР ПОСТА 1 ═══════════════════════════════════ -->
     <article class="post">
       <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
       <h2>Смерть</h2>
-      <p>
-        Сегодня уже прошло два года, как я хотел совершить самоубийство, прыгнув с железнодорожного моста, не знаю... Наступит ли такой момент ещё раз. Но меня остановило то, что по мне будет скучать моя мама и мои братья и сестра
-      </p>
+      <p>Сегодня уже прошло два года, как я хотел совершить самоубийство, прыгнув с железнодорожного моста, не знаю... Наступит ли такой момент ещё раз. Но меня остановило то, что по мне будет скучать моя мама и мои братья и сестра</p>
       <div class="tags">
         <span class="tag">СМЕРТЬ...</span>
         <span class="tag">мысли</span>
       </div>
     </article>
 
-<!-- ═══ ПРИМЕР ПОСТА 1 ═══════════════════════════════════ -->
     <article class="post">
       <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
       <h2>Любовь и ненависть</h2>
-      <p>
-        Месяц назад меня отвергла девушка которой я признался в любви.💔
+      <p>Месяц назад меня отвергла девушка которой я признался в любви.💔
 
 Она прилюдно меня унизила и назвала "тупым уёбком"
 
-Как же я её ненавижу...
-      </p>
+Как же я её ненавижу...</p>
       <div class="tags">
         <span class="tag">любовь</span>
         <span class="tag">мысли</span>
       </div>
     </article>
 
-<!-- ═══ ПРИМЕР ПОСТА 1 ═══════════════════════════════════ -->
     <article class="post">
       <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
       <h2>Лень</h2>
-      <p>
-        Мне просто лень делать уроки, я не могу начать их делать, из-за этого у меня плохие оценки, я не знаю алгебру, а значит, не сдам ОГЭ
-      </p>
+      <p>Мне просто лень делать уроки, я не могу начать их делать, из-за этого у меня плохие оценки, я не знаю алгебру, а значит, не сдам ОГЭ</p>
       <div class="tags">
         <span class="tag">ОГЭ</span>
         <span class="tag">мысли</span>
       </div>
     </article>
 
-<!-- ═══ ПРИМЕР ПОСТА 1 ═══════════════════════════════════ -->
     <article class="post">
       <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
       <h2>ОГЭ</h2>
-      <p>
-        Если я не сдам ОГЭ, то тогда я совершу самоубийство. Так будет лучше
-      </p>
+      <p>Если я не сдам ОГЭ, то тогда я совершу самоубийство. Так будет лучше</p>
       <div class="tags">
         <span class="tag">ОГЭ</span>
         <span class="tag">мысли</span>
       </div>
     </article>
 
-<!-- ═══ ПРИМЕР ПОСТА 1 ═══════════════════════════════════ -->
     <article class="post">
       <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
       <h2>курение</h2>
-      <p>
-        Я курю уже больше месяца, мне плохо из-за этого, ведь я подвожу свою мать, которая хочет мне только здоровья
-      </p>
+      <p>Я курю уже больше месяца, мне плохо из-за этого, ведь я подвожу свою мать, которая хочет мне только здоровья</p>
       <div class="tags">
         <span class="tag">курение</span>
         <span class="tag">мысли</span>
       </div>
     </article>
 
-<!-- ═══ ПРИМЕР ПОСТА 1 ═══════════════════════════════════ -->
     <article class="post">
       <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
       <h2>Спать,Сон</h2>
-      <p>
-        Время уже 5 часов утра, а я даже не спал, интересно, как я буду в школе отсиживать 7 уроков.
-Хах. Походу снова засну на алгебре
-      </p>
+      <p>Время уже 5 часов утра, а я даже не спал, интересно, как я буду в школе отсиживать 7 уроков.
+Хах. Походу снова засну на алгебре</p>
       <div class="tags">
         <span class="tag">Сон</span>
         <span class="tag">мысли</span>
       </div>
     </article>
 
+<!-- ═══ ПРИМЕР ПОСТА 1 ═══════════════════════════════════ -->
+    <article class="post">
+      <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
+      <h2>фотки</h2>
+      <p>
+        теперь я смогу публиковать фоточки в своём дневнике 
+      </p>
+
+<div class="media">
+  <img src="kotik.png" alt="" onclick="openLightbox(this)">
+</div>
+
+      <div class="tags">
+        <span class="tag">коты</span>
+        <span class="tag">обнова</span>
+      </div>
+    </article>
+
   </main>
+
+  <!-- Лайтбокс для увеличения фото -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <script>
+    function openLightbox(img) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightboxImg.src = img.src;
+      lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+    }
+  </script>
 
 </body>
 </html>
