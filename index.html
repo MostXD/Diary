@@ -112,8 +112,8 @@
       width: 100%;
       height: auto;
       display: block;
-      object-fit: cover;
-      max-height: 500px;
+      object-fit: contain;
+      min-height: 200px;
     }
 
     .media video {
@@ -337,21 +337,16 @@
       </div>
     </article>
 
-<!-- ═══ ПРИМЕР ПОСТА 1 ═══════════════════════════════════ -->
-    <article class="post">
+<article class="post">
       <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
-      <h2>фотки</h2>
-      <p>
-        теперь я смогу публиковать фоточки в своём дневнике 
-      </p>
-
-<div class="media">
-  <img src="kotik.png" alt="" onclick="openLightbox(this)">
+      <h2>фоточки</h2>
+      <p>я добавил отображение фотографий в свой дневник</p>
+      <div class="media">
+  <img src="kotik.jpg" alt="" onclick="openLightbox(this)">
 </div>
-
       <div class="tags">
-        <span class="tag">коты</span>
         <span class="tag">обнова</span>
+        <span class="tag">мысли</span>
       </div>
     </article>
 
