@@ -7,11 +7,7 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500&display=swap');
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       background-color: #0f0f0f;
@@ -27,43 +23,28 @@
       border-bottom: 1px solid #222;
     }
 
-    header h1 {
-      font-size: 2.8rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      color: #e8e2da;
-    }
+    header h1 { font-size: 2.8rem; font-weight: 600; letter-spacing: 0.08em; color: #e8e2da; }
+    header p.subtitle { margin-top: 10px; font-style: italic; font-size: 1.05rem; color: #6b655e; }
+    .divider { width: 40px; height: 1px; background: #3a3530; margin: 14px auto 0; }
 
-    header p.subtitle {
-      margin-top: 10px;
-      font-style: italic;
-      font-size: 1.05rem;
-      color: #6b655e;
-    }
+    main { max-width: 680px; margin: 0 auto; padding: 50px 24px 0; }
 
-    .divider {
-      width: 40px;
-      height: 1px;
-      background: #3a3530;
-      margin: 14px auto 0;
-    }
+    .post { margin-bottom: 52px; padding-bottom: 52px; border-bottom: 1px solid #1e1e1e; }
+    .post:last-child { border-bottom: none; }
 
-    main {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 50px 24px 0;
+    .post.pinned { border: 1px solid #2a2520; border-radius: 10px; padding: 28px; margin-bottom: 52px; background: #111010; }
+    .pin-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #5a5048;
+      margin-bottom: 14px;
     }
-
-    /* ─── ПОСТ ─────────────────────────────── */
-    .post {
-      margin-bottom: 52px;
-      padding-bottom: 52px;
-      border-bottom: 1px solid #1e1e1e;
-    }
-
-    .post:last-child {
-      border-bottom: none;
-    }
+    .pin-label svg { width: 11px; height: 11px; fill: #5a5048; }
 
     .post .date {
       font-family: 'Inter', sans-serif;
@@ -74,56 +55,16 @@
       color: #6b655e;
       margin-bottom: 14px;
     }
+    .post .date span { color: #9c8f82; font-weight: 600; }
 
-    .post .date span {
-      color: #9c8f82;
-      font-weight: 600;
-    }
+    .post h2 { font-size: 1.45rem; font-weight: 600; color: #e8e2da; margin-bottom: 14px; line-height: 1.4; }
+    .post p { font-size: 1.15rem; line-height: 1.85; color: #b0a89f; white-space: pre-line; }
+    .post p + p { margin-top: 12px; }
 
-    .post h2 {
-      font-size: 1.45rem;
-      font-weight: 600;
-      color: #e8e2da;
-      margin-bottom: 14px;
-      line-height: 1.4;
-    }
+    .media { margin: 20px 0; border-radius: 8px; overflow: hidden; border: 1px solid #1e1e1e; background: #0a0a0a; }
+    .media img { width: 100%; height: auto; display: block; object-fit: contain; min-height: 200px; }
+    .media video { width: 100%; height: auto; display: block; background: #000; }
 
-    .post p {
-      font-size: 1.15rem;
-      line-height: 1.85;
-      color: #b0a89f;
-      white-space: pre-line;
-    }
-
-    .post p + p {
-      margin-top: 12px;
-    }
-
-    /* ─── МЕДИА КОНТЕЙНЕРЫ ─────────────────── */
-    .media {
-      margin: 20px 0;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid #1e1e1e;
-      background: #0a0a0a;
-    }
-
-    .media img {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: contain;
-      min-height: 200px;
-    }
-
-    .media video {
-      width: 100%;
-      height: auto;
-      display: block;
-      background: #000;
-    }
-
-    /* Аудио плеер */
     .audio-player {
       background: linear-gradient(135deg, #1a1715 0%, #0f0f0f 100%);
       padding: 18px 22px;
@@ -131,88 +72,19 @@
       border-radius: 8px;
       border: 1px solid #2a2520;
     }
+    .audio-player audio { width: 100%; height: 40px; filter: sepia(20%) saturate(70%) hue-rotate(5deg); }
+    .audio-caption { margin-top: 10px; font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #6b655e; text-align: center; letter-spacing: 0.08em; }
 
-    .audio-player audio {
-      width: 100%;
-      height: 40px;
-      filter: sepia(20%) saturate(70%) hue-rotate(5deg);
-    }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin: 20px 0; }
+    .gallery img { width: 100%; height: 200px; object-fit: cover; border-radius: 6px; border: 1px solid #1e1e1e; cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
+    .gallery img:hover { transform: scale(1.03); border-color: #3a3530; }
 
-    .audio-caption {
-      margin-top: 10px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.75rem;
-      color: #6b655e;
-      text-align: center;
-      letter-spacing: 0.08em;
-    }
+    .tags { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { font-family: 'Inter', sans-serif; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6b655e; border: 1px solid #2a2520; border-radius: 20px; padding: 3px 10px; }
 
-    /* Галерея (несколько фото) */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 10px;
-      margin: 20px 0;
-    }
-
-    .gallery img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 6px;
-      border: 1px solid #1e1e1e;
-      cursor: pointer;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.03);
-      border-color: #3a3530;
-    }
-
-    /* ─── ТЕГИ ──────────────────────────────── */
-    .tags {
-      margin-top: 18px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .tag {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #6b655e;
-      border: 1px solid #2a2520;
-      border-radius: 20px;
-      padding: 3px 10px;
-    }
-
-    /* Лайтбокс для увеличения фото */
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.93);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      padding: 40px;
-    }
-
-    .lightbox.active {
-      display: flex;
-    }
-
-    .lightbox img {
-      max-width: 95%;
-      max-height: 95%;
-      object-fit: contain;
-      border-radius: 8px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
-    }
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.93); z-index: 1000; align-items: center; justify-content: center; cursor: pointer; padding: 40px; }
+    .lightbox.active { display: flex; }
+    .lightbox img { max-width: 95%; max-height: 95%; object-fit: contain; border-radius: 8px; box-shadow: 0 8px 32px rgba(0,0,0,0.8); }
   </style>
 </head>
 <body>
@@ -223,201 +95,155 @@
     <div class="divider"></div>
   </header>
 
-  <main>
+  <main id="feed"></main>
 
-    <article class="post">
-      <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
-      <h2>Первая запись</h2>
-      <p>Решил завести дневник. Не знаю зачем - наверное, чтобы хоть куда-то
-выгружать всё то, что копится в голове. Посмотрим, надолго ли меня хватит.</p>
-      <div class="tags">
-        <span class="tag">начало</span>
-        <span class="tag">мысли</span>
-      </div>
-    </article> 
-
-    <article class="post">
-      <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
-      <h2>Дневник?</h2>
-      <p>Я не доверяю бумажным дневникам, да и где мне его хранить, а так про этот сайт буду знать только я</p>
-      <div class="tags">
-        <span class="tag">начало</span>
-        <span class="tag">мысли</span>
-      </div>
-    </article> 
-
-    <article class="post">
-      <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
-      <h2>Смерть</h2>
-      <p>Вы когда-нибудь задумывались о том, что будет после смерти, рай или ад, реинкарнация или просто... Ничего?
-
-Может, после смерти будет то, что было до нашего рождения, Я НЕ ЗНАЮ. И из-за ЭТОГО МНЕ ПЛОХО.
-
-Сами задумайтесь, как после смерти, мы ведь никогда не узнаем...</p>
-      <div class="tags">
-        <span class="tag">СМЕРТЬ...</span>
-        <span class="tag">мысли</span>
-      </div>
-    </article> 
-
-    <article class="post">
-      <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
-      <h2>Я уебан</h2>
-      <p>Сегодня я разбил свой телефон в школе, точнее, вчера, теперь у меня трещина на экране телефона.
-
-Какой я неуклюжий</p>
-      <div class="tags">
-        <span class="tag">телефон</span>
-        <span class="tag">мысли</span>
-      </div>
-    </article> 
-
-    <article class="post">
-      <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
-      <h2>Смерть</h2>
-      <p>Сегодня уже прошло два года, как я хотел совершить самоубийство, прыгнув с железнодорожного моста, не знаю... Наступит ли такой момент ещё раз. Но меня остановило то, что по мне будет скучать моя мама и мои братья и сестра</p>
-      <div class="tags">
-        <span class="tag">СМЕРТЬ...</span>
-        <span class="tag">мысли</span>
-      </div>
-    </article>
-
-    <article class="post">
-      <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
-      <h2>Любовь и ненависть</h2>
-      <p>Месяц назад меня отвергла девушка которой я признался в любви.💔
-
-Она прилюдно меня унизила и назвала "тупым уёбком"
-
-Как же я её ненавижу...</p>
-      <div class="tags">
-        <span class="tag">любовь</span>
-        <span class="tag">мысли</span>
-      </div>
-    </article>
-
-    <article class="post">
-      <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
-      <h2>Лень</h2>
-      <p>Мне просто лень делать уроки, я не могу начать их делать, из-за этого у меня плохие оценки, я не знаю алгебру, а значит, не сдам ОГЭ</p>
-      <div class="tags">
-        <span class="tag">ОГЭ</span>
-        <span class="tag">мысли</span>
-      </div>
-    </article>
-
-    <article class="post">
-      <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
-      <h2>ОГЭ</h2>
-      <p>Если я не сдам ОГЭ, то тогда я совершу самоубийство. Так будет лучше</p>
-      <div class="tags">
-        <span class="tag">ОГЭ</span>
-        <span class="tag">мысли</span>
-      </div>
-    </article>
-
-    <article class="post">
-      <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
-      <h2>курение</h2>
-      <p>Я курю уже больше месяца, мне плохо из-за этого, ведь я подвожу свою мать, которая хочет мне только здоровья</p>
-      <div class="tags">
-        <span class="tag">курение</span>
-        <span class="tag">мысли</span>
-      </div>
-    </article>
-
-    <article class="post">
-      <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
-      <h2>Спать,Сон</h2>
-      <p>Время уже 5 часов утра, а я даже не спал, интересно, как я буду в школе отсиживать 7 уроков.
-Хах. Походу снова засну на алгебре</p>
-      <div class="tags">
-        <span class="tag">Сон</span>
-        <span class="tag">мысли</span>
-      </div>
-    </article>
-
-<article class="post">
-      <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
-      <h2>фоточки</h2>
-      <p>я добавил отображение фотографий в свой дневник</p>
-      <div class="media">
-  <img src="kotik.jpg" alt="" onclick="openLightbox(this)">
-</div>
-      <div class="tags">
-        <span class="tag">обнова</span>
-        <span class="tag">мысли</span>
-      </div>
-    </article>
-
-
-<article class="post">
-      <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
-      <h2>Если финал то только как эта песня</h2>
-      <p></p>
-      <div class="audio-player">
-  <audio controls>
-    <source src="love.-wavetoearth.mp3" type="audio/mpeg">
-  </audio>
-  <div class="audio-caption">love.- wave to earth.mp3</div>
-</div>
-      <div class="tags">
-        <span class="tag">музыка</span>
-        <span class="tag">мысли</span>
-      </div>
-    </article>
-
-
-<article class="post">
-      <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
-      <h2>в 6 часов утра вы наполняетесь решимостью</h2>
-      <p></p>
-      <div class="audio-player">
-  <audio controls>
-    <source src="undertale.mp3" type="audio/mpeg">
-  </audio>
-  <div class="audio-caption">Tobyfox - undertale.mp3</div>
-</div>
-      <div class="tags">
-        <span class="tag">музыка</span>
-        <span class="tag">мысли</span>
-      </div>
-    </article>
-
-<article class="post">
-      <div class="date"><span>18 февраля 2026</span> &nbsp;·&nbsp; среда</div>
-      <h2>Напоминает детство</h2>
-      <p></p>
-      <div class="audio-player">
-  <audio controls>
-    <source src="love is blue.mp3" type="audio/mpeg">
-  </audio>
-  <div class="audio-caption">love is blue.mp3</div>
-</div>
-      <div class="tags">
-        <span class="tag">музыка</span>
-        <span class="tag">мысли</span>
-      </div>
-    </article>
-
-  </main>
-
-  <!-- Лайтбокс для увеличения фото -->
   <div class="lightbox" id="lightbox" onclick="closeLightbox()">
     <img id="lightbox-img" src="" alt="">
   </div>
 
   <script>
+    const posts = [
+      {
+        date: "18 февраля 2026", day: "среда",
+        title: "Первая запись",
+        text: `Решил завести дневник. Не знаю зачем - наверное, чтобы хоть куда-то\nвыгружать всё то, что копится в голове. Посмотрим, надолго ли меня хватит.`,
+        tags: ["начало", "мысли"]
+      },
+      {
+        date: "18 февраля 2026", day: "среда",
+        title: "Дневник?",
+        text: `Я не доверяю бумажным дневникам, да и где мне его хранить, а так про этот сайт буду знать только я`,
+        tags: ["начало", "мысли"]
+      },
+      {
+        date: "18 февраля 2026", day: "среда",
+        title: "Смерть",
+        text: `Вы когда-нибудь задумывались о том, что будет после смерти, рай или ад, реинкарнация или просто... Ничего?\n\nМожет, после смерти будет то, что было до нашего рождения, Я НЕ ЗНАЮ. И из-за ЭТОГО МНЕ ПЛОХО.\n\nСами задумайтесь, как после смерти, мы ведь никогда не узнаем...`,
+        tags: ["СМЕРТЬ...", "мысли"]
+      },
+      {
+        date: "18 февраля 2026", day: "среда",
+        title: "Я уебан",
+        text: `Сегодня я разбил свой телефон в школе, точнее, вчера, теперь у меня трещина на экране телефона.\n\nКакой я неуклюжий`,
+        tags: ["телефон", "мысли"]
+      },
+      {
+        date: "18 февраля 2026", day: "среда",
+        title: "Смерть",
+        text: `Сегодня уже прошло два года, как я хотел совершить самоубийство, прыгнув с железнодорожного моста, не знаю... Наступит ли такой момент ещё раз. Но меня остановило то, что по мне будет скучать моя мама и мои братья и сестра`,
+        tags: ["СМЕРТЬ...", "мысли"]
+      },
+      {
+        date: "18 февраля 2026", day: "среда",
+        title: "Любовь и ненависть",
+        text: `Месяц назад меня отвергла девушка которой я признался в любви.💔\n\nОна прилюдно меня унизила и назвала "тупым уёбком"\n\nКак же я её ненавижу...`,
+        tags: ["любовь", "мысли"]
+      },
+      {
+        date: "18 февраля 2026", day: "среда",
+        title: "Лень",
+        text: `Мне просто лень делать уроки, я не могу начать их делать, из-за этого у меня плохие оценки, я не знаю алгебру, а значит, не сдам ОГЭ`,
+        tags: ["ОГЭ", "мысли"]
+      },
+      {
+        date: "18 февраля 2026", day: "среда",
+        title: "ОГЭ",
+        text: `Если я не сдам ОГЭ, то тогда я совершу самоубийство. Так будет лучше`,
+        tags: ["ОГЭ", "мысли"]
+      },
+      {
+        date: "18 февраля 2026", day: "среда",
+        title: "курение",
+        text: `Я курю уже больше месяца, мне плохо из-за этого, ведь я подвожу свою мать, которая хочет мне только здоровья`,
+        tags: ["курение", "мысли"]
+      },
+      {
+        date: "18 февраля 2026", day: "среда",
+        title: "Спать, Сон",
+        text: `Время уже 5 часов утра, а я даже не спал, интересно, как я буду в школе отсиживать 7 уроков.\nХах. Походу снова засну на алгебре`,
+        tags: ["Сон", "мысли"]
+      },
+      {
+        date: "18 февраля 2026", day: "среда",
+        title: "фоточки",
+        text: `я добавил отображение фотографий в свой дневник`,
+        media: { type: "image", src: "kotik.jpg" },
+        tags: ["обнова", "мысли"]
+      },
+      {
+        date: "18 февраля 2026", day: "среда",
+        title: "Если финал то только как эта песня",
+        text: "",
+        audio: { src: "love.-wavetoearth.mp3", caption: "love.- wave to earth.mp3" },
+        pinned: true,
+        tags: ["музыка", "мысли"]
+      },
+      {
+        date: "18 февраля 2026", day: "среда",
+        title: "в 6 часов утра вы наполняетесь решимостью",
+        text: "",
+        audio: { src: "undertale.mp3", caption: "Tobyfox - undertale.mp3" },
+        tags: ["музыка", "мысли"]
+      },
+      {
+        date: "18 февраля 2026", day: "среда",
+        title: "Напоминает детство",
+        text: "",
+        audio: { src: "love is blue.mp3", caption: "love is blue.mp3" },
+        tags: ["музыка", "мысли"]
+      }
+    ];
+
+    function renderPosts() {
+      const feed = document.getElementById('feed');
+      const pinned = posts.filter(p => p.pinned);
+      const rest = [...posts.filter(p => !p.pinned)].reverse();
+      const ordered = [...pinned, rest.length ? '__divider__' : null, ...rest].filter(Boolean);
+      feed.innerHTML = ordered.map(p => {
+        if (p === '__divider__') return `
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:42px;margin-top:-10px;">
+            <div style="flex:1;height:1px;background:#1e1e1e;"></div>
+            <span style="font-family:'Inter',sans-serif;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:#3a3530;white-space:nowrap;">новые посты</span>
+            <div style="flex:1;height:1px;background:#1e1e1e;"></div>
+          </div>`;
+        return `
+        <article class="post${p.pinned ? ' pinned' : ''}">
+          ${p.pinned ? `<div class="pin-label"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 3a1 1 0 0 1 .707 1.707L14.414 7l1.293 1.293a1 1 0 0 1-1.414 1.414L13 8.414l-4.293 4.293A1 1 0 0 1 8 13H6.414l-1.707 1.707a1 1 0 0 1-1.414-1.414L5 11.586V10a1 1 0 0 1 .293-.707L9.586 5.586 8.293 4.293a1 1 0 0 1 1.414-1.414L11 4.172l2.293-2.293A1 1 0 0 1 14 2h1a1 1 0 0 1 1 1z"/></svg>закреплено</div>` : ''}
+          <div class="date"><span>${p.date}</span> &nbsp;·&nbsp; ${p.day}</div>
+          <h2>${p.title}</h2>
+          ${p.text ? `<p>${p.text}</p>` : ''}
+          ${p.media && p.media.type === 'image' ? `
+            <div class="media">
+              <img src="${p.media.src}" alt="" onclick="openLightbox(this)">
+            </div>` : ''}
+          ${p.video ? `
+            <div class="media">
+              <video controls>
+                <source src="${p.video.src}" type="video/mp4">
+              </video>
+            </div>` : ''}
+          ${p.audio ? `
+            <div class="audio-player">
+              <audio controls>
+                <source src="${p.audio.src}" type="audio/mpeg">
+              </audio>
+              <div class="audio-caption">${p.audio.caption}</div>
+            </div>` : ''}
+          <div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+        </article>`;
+      }).join('');
+    }
+
     function openLightbox(img) {
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightbox-img');
-      lightboxImg.src = img.src;
-      lightbox.classList.add('active');
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox').classList.add('active');
     }
 
     function closeLightbox() {
       document.getElementById('lightbox').classList.remove('active');
     }
+
+    renderPosts();
   </script>
 
 </body>
